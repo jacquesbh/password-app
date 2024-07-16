@@ -6,7 +6,7 @@ const port = 8080;
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        exec('pwgen -n 30 -y -1', (error, stdout, stderr) => {
+        exec("tr -dc 'A-Za-z0-9!?%=' < /dev/urandom | head -c 30", (error, stdout, stderr) => {
             if (error) {
                 console.error(`exec error: ${error}`);
                 res.statusCode = 500;
